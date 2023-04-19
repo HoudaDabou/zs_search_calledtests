@@ -14,7 +14,7 @@ NodeJs 14.x
 npm install
 ```
 
-### Run the script to generate a json output including all test cases that call others:
+### Run the script to generate ```./output/list_called_test_cases.json``` output including all test cases that call others:
 
 ```
 AUTH=username:password BASE_URL=<your_jira_url> PROJECT_KEY=<your_project_key> node zs_search_calltotest.js
