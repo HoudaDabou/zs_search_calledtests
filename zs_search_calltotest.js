@@ -82,7 +82,6 @@ const buildCalledTestCasesList = (inputFilePath, outputFilePath) => {
       if (testScript && Array.isArray(testScript.steps)) {
         for (let i = 0; i < testScript.steps.length; i++) {
           const step = testScript.steps[i];
-          console.log(step);
           if (step.hasOwnProperty("testCaseKey")) {
             calledTests.push({
               "testCaseKey": step.testCaseKey,
