@@ -59,12 +59,13 @@ const filterTestCases = (testCases) => {
   
   
 const writeTestCases = (testCases) => {
-  fs.writeFile('./output/all_test_cases.json', JSON.stringify(testCases, null, 2), err => {
+  const outputDir = './output';
+  fs.writeFile(`${outputDir}/all_test_cases.json`, JSON.stringify(testCases, null, 2), err => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log('Test cases saved to ./output/all_test_cases.json');
+    console.log(`Test cases saved to ${outputDir}/all_test_cases.json`);
   });
 };
 
@@ -81,10 +82,13 @@ const buildCalledTestCasesList = (inputFilePath, outputFilePath) => {
       if (testScript && Array.isArray(testScript.steps)) {
         for (let i = 0; i < testScript.steps.length; i++) {
           const step = testScript.steps[i];
+          console.log(step);
           if (step.hasOwnProperty("testCaseKey")) {
             calledTests.push({
               "testCaseKey": step.testCaseKey,
-              "id": step.id
+              "id": step.id,
+              "index": step.index,
+              "stepParameters": step.stepParameters
             });
           }
         }
